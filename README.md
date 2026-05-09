@@ -22,32 +22,32 @@ pip install tqdm
 
 
 ##二，数据导入HDFS和HIVE数据仓库构建
-①，创建HDFS上的对应目录(/data已存在)
-hadoop fs -mkdir /data/products /data/behaviors /data/users /data/orders
-②，上传文件到对应HDFS目录,copyFromLocal=put
-hadoop fs -copyFromLocal /tmp/orders.csv /data/orders
-hadoop fs -copyFromLocal /tmp/users.csv /data/users
-hadoop fs -copyFromLocal /tmp/behaviors.csv /data/behaviors
-hadoop fs -copyFromLocal /tmp/products.csv /data/products
-注：文件位置根据自己的实际位置来
-③，hive映射表-(进入客户端操作)
-su hive , hive
- create table behaviors
- (user_id string,product_id string,behavior_type string,timestamp_str string,order_id string) 
- row format delimited fields terminated by ',' stored as textfile location "/data/behaviors" TBLPROPERTIES ("skip.header.line.count" = "1");
-
- create table users
- (user_id string,age int,gender string,city string,registera_date string) 
- row format delimited fields terminated by ',' stored as TextFile location '/data/users' TBLPROPERTIES ("skip.header.line.count" = "1");
-
-  create table orders
- (order_id string,user_id string,product_id string,checkout_time_str string,pay_time_str string) 
- row format delimited fields terminated by ',' stored as TextFile location '/data/orders' TBLPROPERTIES ("skip.header.line.count" = "1");
-
-  create table products
- (product_id string,category string,price double,brand string) 
- row format delimited fields terminated by ',' stored as TextFile location '/data/products' TBLPROPERTIES ("skip.header.line.count" = "1");
- :TBLPROPERTIES ("skip.header.line.count" = "1")-跳过首行（字段行）
+   ①，创建HDFS上的对应目录(/data已存在)
+   hadoop fs -mkdir /data/products /data/behaviors /data/users /data/orders
+   ②，上传文件到对应HDFS目录,copyFromLocal=put
+   hadoop fs -copyFromLocal /tmp/orders.csv /data/orders
+   hadoop fs -copyFromLocal /tmp/users.csv /data/users
+   hadoop fs -copyFromLocal /tmp/behaviors.csv /data/behaviors
+   hadoop fs -copyFromLocal /tmp/products.csv /data/products
+   注：文件位置根据自己的实际位置来
+    ③，hive映射表-(进入客户端操作)
+  su hive , hive
+   create table behaviors
+   (user_id string,product_id string,behavior_type string,timestamp_str string,order_id string) 
+   row format delimited fields terminated by ',' stored as textfile location "/data/behaviors" TBLPROPERTIES ("skip.header.line.count" = "1");
+  
+   create table users
+   (user_id string,age int,gender string,city string,registera_date string) 
+   row format delimited fields terminated by ',' stored as TextFile location '/data/users' TBLPROPERTIES ("skip.header.line.count" = "1");
+  
+    create table orders
+   (order_id string,user_id string,product_id string,checkout_time_str string,pay_time_str string) 
+   row format delimited fields terminated by ',' stored as TextFile location '/data/orders' TBLPROPERTIES ("skip.header.line.count" = "1");
+  
+    create table products
+   (product_id string,category string,price double,brand string) 
+   row format delimited fields terminated by ',' stored as TextFile location '/data/products' TBLPROPERTIES ("skip.header.line.count" = "1");
+   :TBLPROPERTIES ("skip.header.line.count" = "1")-跳过首行（字段行）
 
  
 

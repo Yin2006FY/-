@@ -32,7 +32,7 @@ pip install tqdm
   - 注：文件位置根据自己的实际位置来
    - ③，hive映射表-(进入客户端操作)
   - su hive , hive
--- create table behaviors
+- create table behaviors
 (user_id string,product_id string,behavior_type string,timestamp_str string,order_id string) 
 row format delimited fields terminated by ',' stored as textfile location "/data/behaviors" TBLPROPERTIES ("skip.header.line.count" = "1");
   
